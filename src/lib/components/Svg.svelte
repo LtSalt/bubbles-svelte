@@ -1,24 +1,31 @@
 <script>
 	import { setContext } from 'svelte';
-	import { readonly, writable } from 'svelte/store';
+	import { derived, readonly, writable } from 'svelte/store';
 
-	let svgWidth = writable(0);
-	let svgHeight = writable(0);
+	export let margins = { top: 20, right: 20, bottom: 50, left: 50 };
+	export let width;
+	export let height;
 
-	let width = readonly(svgWidth);
-	let height = readonly(svgHeight);
+	let outerWidth = writable();
+	let outerHeight = writable();
 
-	setContext('dimensions', { width, height });
+	let innerWidth = derived(outerWidth, ($outerWidth) => {
+		return $outerWidth - margins.left - margins.right;
+	});
+	let innerHeight = derived(outerHeight, ($outerHeight) => {
+		return $outerHeight - margins.top - margins.bottom;
+	});
+
+	setContext('dimensions', { margins, innerWidth, innerHeight });
 </script>
 
-<div class="svg-wrapper" bind:clientWidth={$svgWidth} bind:clientHeight={$svgHeight}>
-	<svg width={$svgWidth} height={$svgHeight}>
+<div
+	class="svg-wrapper"
+	style="width: {width}; height: {height}"
+	bind:clientWidth={$outerWidth}
+	bind:clientHeight={$outerHeight}
+>
+	<svg width={$outerWidth} height={$outerHeight}>
 		<slot />
 	</svg>
 </div>
-
-<style>
-	.svg-wrapper {
-		height: 100%;
-	}
-</style>

@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 
-	let { width, height } = getContext('dimensions');
+	let { innerWidth, innerHeight } = getContext('dimensions');
 
-	$: console.log($width);
+	$: console.log($innerWidth);
 </script>
