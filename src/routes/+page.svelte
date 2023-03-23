@@ -1,2 +1,19 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import Scales from '../lib/components/Scales.svelte';
+	import Svg from '../lib/components/Svg.svelte';
+
+	export let data;
+	const { gapminder } = data;
+
+	// $: console.log(gapminder);
+</script>
+
+<Svg>
+	<Scales let:/>
+</Svg>
+
+<style>
+	:global(body) {
+		height: 100svh;
+	}
+</style>
