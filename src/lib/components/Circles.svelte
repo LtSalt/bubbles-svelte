@@ -1,17 +1,24 @@
 <script>
 	import { getContext } from 'svelte';
-	import { svg } from '$lib/context/contextKeys';
+	import { viz, svg } from '$lib/context/contextKeys';
+	import R from './R.svelte';
 
-	export let d;
-
-	let { selection } = getContext('viz');
+	let { selection } = getContext(viz);
 	let { scales, accessors } = getContext(svg);
 
 	let x = $scales.x;
 	let y = $scales.y;
+	let r = $scales.r;
+
 	let xAccessor = $accessors.xAccessor;
 	let yAccessor = $accessors.yAccessor;
-	$: console.log($selection);
+	let rAccessor = $accessors.rAccessor;
+
+	$: console.log(r);
+	$: console.log(rAccessor);
 </script>
 
-<!-- <circle cx={$x(d[xAccessor])} cy={$y(d[yAccessor])} r="10" /> -->
+{#each $selection as d}
+	<!-- <circle cx={$x(d[xAccessor])} cy={$y(d[yAccessor])} r={r(d[rAccessor])} /> -->
+	<circle cx={$x(d[xAccessor])} cy={$y(d[yAccessor])} r={r(d[rAccessor])} />
+{/each}

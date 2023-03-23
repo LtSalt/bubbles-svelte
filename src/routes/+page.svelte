@@ -1,7 +1,7 @@
 <script>
-	import { scaleLinear, scaleLog } from 'd3';
-	import Circle from '../lib/components/Circle.svelte';
+	import { scaleLinear, scaleLog, scaleSqrt } from 'd3';
 	import Circles from '../lib/components/Circles.svelte';
+	import R from '../lib/components/R.svelte';
 	import Slider from '../lib/components/Slider.svelte';
 
 	import Svg from '../lib/components/Svg.svelte';
@@ -13,16 +13,14 @@
 	const { gapminder } = data;
 </script>
 
-<Viz width="100%" height="100%" data={gapminder}>
+<Viz width="100%" height="100%" data={gapminder} id="country">
 	<Slider accessor="year" />
 
 	<Svg width="100%" height="80%" data={gapminder}>
-		<X scale={scaleLog} accessor="income" />
-		<Y scale={scaleLinear} accessor="life_exp" />
+		<X accessor="income" scale={scaleLog} />
+		<Y accessor="life_exp" scale={scaleLinear} />
+		<R accessor="population" scale={scaleSqrt} range={[4, 40]} />
 		<Circles />
-		<!-- {#each gapminder.filter((d) => d.year === 1900) as d (d.country)}
-			<Circle {d} />
-		{/each} -->
 	</Svg>
 </Viz>
 

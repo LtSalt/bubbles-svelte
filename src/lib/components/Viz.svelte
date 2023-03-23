@@ -6,10 +6,11 @@
 	export let data;
 	export let width;
 	export let height;
+	console.log(data);
 
 	let selection = writable();
 
-	setContext('viz', { data, selection });
+	setContext(viz, { data, selection });
 </script>
 
 <div id="viz" style="width: {width}; height: {height}">

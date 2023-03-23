@@ -1,10 +1,11 @@
 <script>
 	import { getContext } from 'svelte';
 	import { min, max } from 'd3';
+	import { viz } from '$lib/context/contextKeys.js';
 
 	export let accessor;
 
-	let { data, selection } = getContext('viz');
+	let { data, selection } = getContext(viz);
 
 	let minValue = min(data.map((d) => d[accessor]));
 	let maxValue = max(data.map((d) => d[accessor]));
