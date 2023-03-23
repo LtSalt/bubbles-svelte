@@ -1,6 +1,7 @@
 <script>
 	import { setContext } from 'svelte';
-	import { derived, readonly, writable } from 'svelte/store';
+	import { writable, derived } from 'svelte/store';
+	import { dimensions } from '$lib/context/contextKeys';
 
 	export let margins = { top: 20, right: 20, bottom: 50, left: 50 };
 	export let width;
@@ -16,7 +17,7 @@
 		return $outerHeight - margins.top - margins.bottom;
 	});
 
-	setContext('dimensions', { margins, innerWidth, innerHeight });
+	setContext(dimensions, { margins, innerWidth, innerHeight });
 </script>
 
 <div
@@ -26,6 +27,8 @@
 	bind:clientHeight={$outerHeight}
 >
 	<svg width={$outerWidth} height={$outerHeight}>
-		<slot />
+		<g>
+			<slot />
+		</g>
 	</svg>
 </div>

@@ -4,3 +4,4 @@ This is a personal project that aims at recreating the famouse [gapminder bubble
 
 ## Ressources
 - [Svelte readonly stores](https://svelte.dev/docs#run-time-svelte-store-readonly)
+- [Use Symbols as context keys](https://svelte.dev/tutorial/context-api)
