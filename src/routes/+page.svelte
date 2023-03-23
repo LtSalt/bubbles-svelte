@@ -1,5 +1,7 @@
 <script>
 	import { scaleLinear, scaleLog, scaleSqrt } from 'd3';
+	import AxisBottom from '../lib/components/AxisBottom.svelte';
+	import AxisLeft from '../lib/components/AxisLeft.svelte';
 	import Circles from '../lib/components/Circles.svelte';
 	import R from '../lib/components/R.svelte';
 	import Slider from '../lib/components/Slider.svelte';
@@ -20,7 +22,9 @@
 		<X accessor="income" scale={scaleLog} />
 		<Y accessor="life_exp" scale={scaleLinear} />
 		<R accessor="population" scale={scaleSqrt} range={[4, 40]} />
-		<Circles />
+		<Circles fillOpacity="0.8" />
+		<AxisLeft />
+		<AxisBottom />
 	</Svg>
 </Viz>
 

@@ -1,9 +1,10 @@
 <script>
 	import { getContext } from 'svelte';
 	import { viz, svg } from '$lib/context/contextKeys';
-	import R from './R.svelte';
 
-	let { selection } = getContext(viz);
+	export let fillOpacity = 1;
+
+	let { selection, id } = getContext(viz);
 	let { scales, accessors } = getContext(svg);
 
 	let x = $scales.x;
@@ -16,9 +17,17 @@
 
 	$: console.log(r);
 	$: console.log(rAccessor);
+
+	console.log(id);
 </script>
 
-{#each $selection as d}
-	<!-- <circle cx={$x(d[xAccessor])} cy={$y(d[yAccessor])} r={r(d[rAccessor])} /> -->
-	<circle cx={$x(d[xAccessor])} cy={$y(d[yAccessor])} r={r(d[rAccessor])} />
-{/each}
+<g class="circles">
+	{#each $selection as d (d[id])}
+		<circle
+			cx={$x(d[xAccessor])}
+			cy={$y(d[yAccessor])}
+			r={r(d[rAccessor])}
+			fill-opacity={fillOpacity}
+		/>
+	{/each}
+</g>
