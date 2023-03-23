@@ -1,3 +1,4 @@
 const svg = Symbol();
+const viz = Symbol();
 
-export { svg }
+export { svg, viz }

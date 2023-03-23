@@ -22,7 +22,6 @@
 	let accessors = writable({});
 
 	setContext(svg, { margins, innerWidth, innerHeight, scales, accessors, data });
-	// console.log(data);
 </script>
 
 <div
@@ -32,7 +31,7 @@
 	bind:clientHeight={$outerHeight}
 >
 	<svg width={$outerWidth} height={$outerHeight}>
-		<g transform="translate({(margins.left, margins.top)})">
+		<g transform="translate({margins.left},{margins.top})">
 			<slot />
 		</g>
 	</svg>

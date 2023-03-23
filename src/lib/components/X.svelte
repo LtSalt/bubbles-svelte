@@ -9,8 +9,6 @@
 
 	let { innerWidth, scales, data, accessors } = getContext(svg);
 
-	console.log(data);
-
 	let x = derived(innerWidth, ($innerWidth) => {
 		return scale()
 			.domain(extent(data.map((d) => d[accessor])))
