@@ -9,7 +9,7 @@
 </script>
 
 <Svg>
-	<Scales let:/>
+	<Scales />
 </Svg>
 
 <style>
