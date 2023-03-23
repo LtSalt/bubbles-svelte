@@ -1,12 +1,16 @@
 <script>
 	import { derived } from 'svelte/store';
 	import { getContext } from 'svelte';
-	import { dimensions } from '$lib/context/contextKeys';
+	import { svg } from '$lib/context/contextKeys';
 
 	export let scale = () => {};
-	let { innerHeight } = getContext(dimensions);
+	export let accessor;
+
+	let { innerHeight, scales, data } = getContext(svg);
 
 	let y = derived(innerHeight, ($innerHeight) => {
-		return scale.domain([0, 1000]).range([0, $innerHeight]);
+		return scale.domain([0, data[accessor]]).range([$innerHeight, 0]);
 	});
+
+	$scales = { ...$scales, y };
 </script>

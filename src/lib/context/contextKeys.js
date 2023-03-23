@@ -1,3 +1,3 @@
-const dimensions = Symbol();
+const svg = Symbol();
 
-export { dimensions }
+export { svg }

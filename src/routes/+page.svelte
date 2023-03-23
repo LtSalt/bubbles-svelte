@@ -7,13 +7,11 @@
 
 	export let data;
 	const { gapminder } = data;
-
-	// $: console.log(gapminder);
 </script>
 
-<Svg width="100%" height="100%">
-	<X scale={scaleLog} />
-	<Y scale={scaleLinear} />
+<Svg width="100%" height="100%" data={gapminder}>
+	<X scale={scaleLog} accessor="income" />
+	<Y scale={scaleLinear} accessor="life_exp" />
 </Svg>
 
 <style>

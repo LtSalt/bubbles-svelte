@@ -1,7 +1,14 @@
 # README
 
-This is a personal project that aims at recreating the famouse [gapminder bubble chart](https://www.gapminder.org/tools/#$chart-type=bubbles&url=v1), using Svelte.
+This is a personal project that aims at recreating the famous [gapminder bubble chart](https://www.gapminder.org/tools/#$chart-type=bubbles&url=v1), using Svelte.
+
+It's also an exercise on creating reusable components that talk to each other using a mix of the context API and stores, thus hiding complexity from the consumer.
 
 ## Ressources
 - [Svelte readonly stores](https://svelte.dev/docs#run-time-svelte-store-readonly)
-- [Use Symbols as context keys](https://svelte.dev/tutorial/context-api)
+- [Use symbols as context keys](https://svelte.dev/tutorial/context-api)
+
+## Questions
+- How to pass data from child to parent?
+  - `bind`: consumer has to engage
+  - pass a writable store via `setContext()`
