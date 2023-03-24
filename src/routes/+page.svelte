@@ -27,9 +27,11 @@
 	</Svg>
 
 	<Slider accessor="year" step="1" styles="width: 100%" />
-	<div id="year">
-		{filters.sliderFilter}
-	</div>
+	{#if filters.sliderFilter}
+		<div id="year">
+			{filters.sliderFilter}
+		</div>
+	{/if}
 </Viz>
 
 <style>
