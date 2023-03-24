@@ -2,7 +2,7 @@
 
 This is a personal project that aims at recreating the famous [gapminder bubble chart](https://www.gapminder.org/tools/#$chart-type=bubbles&url=v1), using Svelte.
 
-The project is an exercise on creating reusable components that talk to each other using a mix of the context API and stores, thus hiding complexity from the consumer.
+The project is an exercise in creating reusable components that talk to each other using a mix of the context API and stores, thus hiding complexity from the consumer.
 
 
 ## TODO
