@@ -10,9 +10,8 @@
 	import Viz from '../lib/components/Viz.svelte';
 	import X from '../lib/components/X.svelte';
 	import Y from '../lib/components/Y.svelte';
+	import gapminder from '$lib/data/gapminder.json';
 
-	export let data;
-	const { gapminder } = data;
 	const fillColors = ['#4E79A7FF', '#EDC948FF', '#76B7B2FF', '#59A14FFF', '#B07AA1FF'];
 </script>
 
