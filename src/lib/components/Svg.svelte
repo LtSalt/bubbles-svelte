@@ -3,7 +3,6 @@
 	import { writable, derived } from 'svelte/store';
 	import { svg } from '$lib/context/contextKeys';
 
-	export let data;
 	export let margins = { top: 20, right: 20, bottom: 50, left: 50 };
 	export let width;
 	export let height;
@@ -21,7 +20,7 @@
 	let scales = writable({});
 	let accessors = writable({});
 
-	setContext(svg, { margins, innerWidth, innerHeight, scales, accessors, data });
+	setContext(svg, { margins, innerWidth, innerHeight, scales, accessors });
 </script>
 
 <div
@@ -30,9 +29,11 @@
 	bind:clientWidth={$outerWidth}
 	bind:clientHeight={$outerHeight}
 >
-	<svg width={$outerWidth} height={$outerHeight}>
-		<g transform="translate({margins.left},{margins.top})">
-			<slot />
-		</g>
-	</svg>
+	{#if $innerWidth && $innerHeight}
+		<svg width={$outerWidth} height={$outerHeight}>
+			<g transform="translate({margins.left},{margins.top})">
+				<slot />
+			</g>
+		</svg>
+	{/if}
 </div>

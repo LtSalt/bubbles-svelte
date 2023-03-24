@@ -1,13 +1,14 @@
 <script>
 	import { derived } from 'svelte/store';
 	import { getContext } from 'svelte';
-	import { svg } from '$lib/context/contextKeys';
+	import { viz, svg } from '$lib/context/contextKeys';
 	import { extent } from 'd3';
 
 	export let scale = () => {};
 	export let accessor;
 
-	let { innerHeight, scales, data, accessors } = getContext(svg);
+	let { innerHeight, scales, accessors } = getContext(svg);
+	let { data } = getContext(viz);
 
 	let y = derived(innerHeight, ($innerHeight) => {
 		return scale()

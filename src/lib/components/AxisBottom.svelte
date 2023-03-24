@@ -9,7 +9,7 @@
 	let x = $scales.x;
 
 	$: if (axis) {
-		select(axis).call(axisBottom($x));
+		select(axis).call(axisBottom($x).ticks(2));
 	}
 </script>
 

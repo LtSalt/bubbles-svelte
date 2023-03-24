@@ -10,24 +10,24 @@
 	let x = $scales.x;
 	let y = $scales.y;
 	let r = $scales.r;
+	let fill = $scales.fill;
 
 	let xAccessor = $accessors.xAccessor;
 	let yAccessor = $accessors.yAccessor;
 	let rAccessor = $accessors.rAccessor;
-
-	$: console.log(r);
-	$: console.log(rAccessor);
-
-	console.log(id);
+	let fillAccessor = $accessors.fillAccessor;
 </script>
 
-<g class="circles">
-	{#each $selection as d (d[id])}
-		<circle
-			cx={$x(d[xAccessor])}
-			cy={$y(d[yAccessor])}
-			r={r(d[rAccessor])}
-			fill-opacity={fillOpacity}
-		/>
-	{/each}
-</g>
+{#if $selection}
+	<g class="circles">
+		{#each $selection as d (d[id])}
+			<circle
+				cx={$x(d[xAccessor])}
+				cy={$y(d[yAccessor])}
+				r={r(d[rAccessor])}
+				fill={fill(d[fillAccessor])}
+				fill-opacity={fillOpacity}
+			/>
+		{/each}
+	</g>
+{/if}

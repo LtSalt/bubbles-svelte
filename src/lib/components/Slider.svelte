@@ -4,7 +4,8 @@
 	import { viz } from '$lib/context/contextKeys.js';
 
 	export let accessor;
-
+	export let step;
+	export let styles;
 	let { data, selection } = getContext(viz);
 
 	let minValue = min(data.map((d) => d[accessor]));
@@ -14,4 +15,13 @@
 	$: $selection = data.filter((d) => d[accessor] === filter);
 </script>
 
-<input type="range" name="slider" id="slider" min={minValue} max={maxValue} bind:value={filter} />
+<input
+	type="range"
+	name="slider"
+	id="slider"
+	min={minValue}
+	max={maxValue}
+	bind:value={filter}
+	{step}
+	style={styles}
+/>

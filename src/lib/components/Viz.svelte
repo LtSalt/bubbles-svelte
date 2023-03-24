@@ -7,7 +7,6 @@
 	export let id;
 	export let width;
 	export let height;
-	console.log(data);
 
 	let selection = writable();
 

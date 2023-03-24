@@ -8,13 +8,13 @@
 	export let accessor;
 	export let range;
 
-	let { scales, accessors } = getContext(svg);
+	let { innerWidth, scales, accessors } = getContext(svg);
 	let { data } = getContext(viz);
 
-	let r = scale()
-		.domain(extent(data.map((d) => d[accessor])))
+	let fill = scale()
+		.domain(Array.from(new Set(data.map((d) => d[accessor]))))
 		.range(range);
 
-	$scales = { ...$scales, r };
-	$accessors = { ...$accessors, rAccessor: accessor };
+	$scales = { ...$scales, fill };
+	$accessors = { ...$accessors, fillAccessor: accessor };
 </script>
