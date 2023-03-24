@@ -9,12 +9,12 @@ The project is an exercise on creating reusable components that talk to each oth
 - [ ] business logic (dynamic filters)
   - [x] input slider
 - [ ] scales
-  - [ ] fill scale?
   - [ ] min and max values as props
 - [ ] transitions?
 - [ ] redundant code
   - [ ] scales
   - [ ] axes
+- [ ] ...
 
 
 ## Problems

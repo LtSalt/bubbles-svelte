@@ -6,13 +6,14 @@
 	export let accessor;
 	export let step;
 	export let styles;
-	let { data, selection } = getContext(viz);
+	let { data, selection, filters } = getContext(viz);
 
 	let minValue = min(data.map((d) => d[accessor]));
 	let maxValue = max(data.map((d) => d[accessor]));
 
 	export let filter = minValue;
 	$: $selection = data.filter((d) => d[accessor] === filter);
+	$: $filters = { ...filters, sliderFilter: filter };
 </script>
 
 <input

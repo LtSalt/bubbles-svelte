@@ -16,7 +16,7 @@
 	const fillColors = ['#4E79A7FF', '#EDC948FF', '#76B7B2FF', '#59A14FFF', '#B07AA1FF'];
 </script>
 
-<Viz width="100%" height="100%" data={gapminder} id="country">
+<Viz width="100%" height="100%" data={gapminder} index="country" let:filters>
 	<Svg width="100%" height="80%">
 		<X accessor="income" scale={scaleLog} />
 		<Y accessor="life_exp" scale={scaleLinear} />
@@ -27,7 +27,10 @@
 		<AxisBottom />
 	</Svg>
 
-	<Slider accessor="year" step="1" width="90%" styles="width: 100%" />
+	<Slider accessor="year" step="1" styles="width: 100%" />
+	<div id="year">
+		{filters.sliderFilter}
+	</div>
 </Viz>
 
 <style>
@@ -35,5 +38,10 @@
 
 	:global(body) {
 		height: 100svh;
+	}
+
+	#year {
+		width: fit-content;
+		margin-inline: auto;
 	}
 </style>

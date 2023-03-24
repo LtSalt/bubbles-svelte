@@ -4,7 +4,7 @@
 
 	export let fillOpacity = 1;
 
-	let { selection, id } = getContext(viz);
+	let { selection, index } = getContext(viz);
 	let { scales, accessors } = getContext(svg);
 
 	let x = $scales.x;
@@ -20,7 +20,7 @@
 
 {#if $selection}
 	<g class="circles">
-		{#each $selection as d (d[id])}
+		{#each $selection as d (d[index])}
 			<circle
 				cx={$x(d[xAccessor])}
 				cy={$y(d[yAccessor])}
